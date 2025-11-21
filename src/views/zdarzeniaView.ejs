@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Zdarzenia – SEWIK</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Zdarzenia – SEWIK</h1>
+
+<section class="panel">
+    <h2>Widoczne kolumny</h2>
+    <p>Zaznacz kolumny, które mają być widoczne w tabeli.</p>
+    <div id="columnControls" class="column-controls"></div>
+</section>
+
+<section class="panel">
+    <h2>Filtrowanie</h2>
+    <p>Ustaw filtry, a następnie kliknij <strong>Filtruj</strong>, aby zastosować zmiany.</p>
+
+    <div id="filterControls" class="filter-controls"></div>
+
+    <div class="filter-actions">
+        <button id="applyFiltersBtn" class="btn primary">Filtruj</button>
+        <button id="clearFiltersBtn" class="btn secondary">Wyczyść filtry</button>
+    </div>
+
+    <div id="activeFiltersSummary" class="active-filters-summary">
+        Obecnie zastosowane filtry: brak
+    </div>
+</section>
+
+<section class="panel">
+    <h2>Dane zdarzeń</h2>
+
+    <div class="table-toolbar">
+        <div class="rows-per-page">
+            Pokaż
+            <select id="pageSizeSelect">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100" selected>100</option>
+            </select>
+            wierszy na stronę
+        </div>
+
+        <div class="pagination-bar">
+            <button id="firstPage" class="btn small">&laquo;</button>
+            <button id="prevPage" class="btn small">&lsaquo;</button>
+
+            <span class="page-input-wrapper">
+                Strona
+                <input id="pageInput" type="number" min="1" value="1">
+                z <span id="totalPages">1</span>
+            </span>
+
+            <button id="nextPage" class="btn small">&rsaquo;</button>
+            <button id="lastPage" class="btn small">&raquo;</button>
+        </div>
+
+        <div class="table-info">
+            <span id="totalRecordsInfo">Łącznie 0 rekordów.</span>
+        </div>
+    </div>
+
+    <table id="results">
+        <thead>
+            <tr id="header-row"></tr>
+        </thead>
+        <tbody id="body-rows"></tbody>
+    </table>
+
+    <div class="pagination-bottom" id="bottomPagination">
+        <span id="bottomPageInfo"></span>
+    </div>
+</section>
+
+<script src="/app.js"></script>
+</body>
+</html>

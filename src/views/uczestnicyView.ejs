@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Uczestnicy – SEWIK</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Uczestnicy – SEWIK</h1>
+
+<div class="filters">
+
+    <div class="filter-box">
+        <label>PLEC:</label>
+        <select multiple id="filterPlec"></select>
+    </div>
+
+    <div class="filter-box">
+        <label>SOBY_KOD:</label>
+        <select multiple id="filterSoby"></select>
+    </div>
+
+    <button id="filterBtn">Filtruj</button>
+</div>
+
+<hr>
+
+<div class="sorting">
+    <label>Sortowanie:</label>
+    <select id="sort1">
+        <option value="">–– brak ––</option>
+        <option value="PLEC">PLEC</option>
+        <option value="DATA_UR">DATA_UR</option>
+        <option value="ZSPO_ID">ZSPO_ID</option>
+    </select>
+
+    <select id="sort1dir">
+        <option value="ASC">Rosnąco</option>
+        <option value="DESC">Malejąco</option>
+    </select>
+
+    <select id="sort2">
+        <option value="">–– brak ––</option>
+        <option value="PLEC">PLEC</option>
+        <option value="DATA_UR">DATA_UR</option>
+        <option value="ZSPO_ID">ZSPO_ID</option>
+    </select>
+
+    <select id="sort2dir">
+        <option value="ASC">Rosnąco</option>
+        <option value="DESC">Malejąco</option>
+    </select>
+
+    <button id="sortBtn">Sortuj</button>
+</div>
+
+<hr>
+
+<table id="results">
+    <thead>
+        <tr>
+            <th>ID_OSOBY_XML</th>
+            <th>ZSZD_ID</th>
+            <th>PLEC</th>
+            <th>DATA_UR</th>
+            <th>SOBY_KOD</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div class="pagination">
+    <button id="prevPage">« poprzednia</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage">następna »</button>
+</div>
+
+<script src="/uczestnicyApp.js"></script>
+</body>
+</html>

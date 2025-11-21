@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Pojazdy – SEWIK</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<h1>Pojazdy – SEWIK</h1>
+
+<div class="filters">
+
+    <div class="filter-box">
+        <label>RODZAJ_POJAZDU:</label>
+        <select multiple id="filterRodzaj"></select>
+    </div>
+
+    <div class="filter-box">
+        <label>MARKA:</label>
+        <select multiple id="filterMarka"></select>
+    </div>
+
+    <button id="filterBtn">Filtruj</button>
+</div>
+
+<hr>
+
+<div class="sorting">
+    <label>Sortowanie:</label>
+    <select id="sort1">
+        <option value="">–– brak ––</option>
+        <option value="MARKA">MARKA</option>
+        <option value="RODZAJ_POJAZDU">RODZAJ_POJAZDU</option>
+        <option value="NR_POJAZDU">NR_POJAZDU</option>
+    </select>
+
+    <select id="sort1dir">
+        <option value="ASC">Rosnąco</option>
+        <option value="DESC">Malejąco</option>
+    </select>
+
+    <select id="sort2">
+        <option value="">–– brak ––</option>
+        <option value="MARKA">MARKA</option>
+        <option value="RODZAJ_POJAZDU">RODZAJ_POJAZDU</option>
+        <option value="NR_POJAZDU">NR_POJAZDU</option>
+    </select>
+
+    <select id="sort2dir">
+        <option value="ASC">Rosnąco</option>
+        <option value="DESC">Malejąco</option>
+    </select>
+
+    <button id="sortBtn">Sortuj</button>
+</div>
+
+<hr>
+
+<table id="results">
+    <thead>
+        <tr>
+            <th>ID_POJAZDU_XML</th>
+            <th>ZSZD_ID</th>
+            <th>NR_POJAZDU</th>
+            <th>RODZAJ_POJAZDU</th>
+            <th>MARKA</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<div class="pagination">
+    <button id="prevPage">« poprzednia</button>
+    <span id="pageInfo"></span>
+    <button id="nextPage">następna »</button>
+</div>
+
+<script src="/pojazdyApp.js"></script>
+</body>
+</html>
