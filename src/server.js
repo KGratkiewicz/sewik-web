@@ -17,6 +17,9 @@ app.use(express.static(path.join(__dirname, "public")));
 // ----- API -----
 app.get("/zdarzenia", zd.getZdarzenia);
 app.get("/zdarzenia/distinct/:column", zd.getDistinct);
+app.get("/pojazdy", pj.getPojazdy);
+app.get("/uczestnicy", uc.getUczestnicy);
+
 
 // ----- FRONTEND -----
 app.get("/", (req, res) => {
@@ -26,5 +29,15 @@ app.get("/", (req, res) => {
 app.get("/zdarzenia/view", (req, res) => {
     res.render("zdarzeniaView");
 });
+
+app.get("/pojazdy/view", (req, res) => {
+  res.render("pojazdyView");
+});
+
+app.get("/uczestnicy/view", (req, res) => {
+  res.render("uczestnicyView");
+});
+
+
 
 app.listen(3000, () => console.log("Frontend + API działa na http://localhost:3000"));

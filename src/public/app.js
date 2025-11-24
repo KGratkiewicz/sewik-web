@@ -175,7 +175,32 @@ function renderTable(columns, rows) {
       const td = document.createElement("td");
       td.dataset.col = col;
       const value = row[col];
-      td.textContent = value == null ? "" : value;
+
+      // specjalne traktowanie kolumn z licznikami:
+      if (col === "LICZBA_POJAZDOW" && row["ID"] != null) {
+        if (value != null && value !== "") {
+          const a = document.createElement("a");
+          a.href = `/pojazdy/view?zdarzenieId=${encodeURIComponent(row["ID"])}`;
+          a.target = "_blank";
+          a.textContent = value;
+          td.appendChild(a);
+        } else {
+          td.textContent = "";
+        }
+      } else if (col === "LICZBA_UCZESTNIKOW" && row["ID"] != null) {
+        if (value != null && value !== "") {
+          const a = document.createElement("a");
+          a.href = `/uczestnicy/view?zdarzenieId=${encodeURIComponent(row["ID"])}`;
+          a.target = "_blank";
+          a.textContent = value;
+          td.appendChild(a);
+        } else {
+          td.textContent = "";
+        }
+      } else {
+        td.textContent = value == null ? "" : value;
+      }
+
       tr.appendChild(td);
     });
     tbody.appendChild(tr);
