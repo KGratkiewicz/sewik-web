@@ -9,6 +9,7 @@ const uc = require("./uczestnicyService");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -37,6 +38,8 @@ app.get("/pojazdy/view", (req, res) => {
 app.get("/uczestnicy/view", (req, res) => {
   res.render("uczestnicyView");
 });
+
+
 
 
 

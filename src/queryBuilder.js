@@ -5,8 +5,11 @@ const NUMERIC_RANGE_COLUMNS = new Set([
     "KM_HM",
     "PREDKOSC_DOPUSZCZALNA",
     "LICZBA_POJAZDOW",
-    "LICZBA_UCZESTNIKOW"
+    "LICZBA_UCZESTNIKOW",
+    "NR_POJAZDU",
+    "LICZBA_LAT_KIEROWANIA"
 ]);
+
 
 
 function buildFilters(query) {

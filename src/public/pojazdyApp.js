@@ -163,7 +163,7 @@ function renderTableP(columns, rows) {
       const td = document.createElement("td");
       td.dataset.col = col;
       const value = row[col];
-      td.textContent = value == null ? "" : value;
+      td.textContent = value == null ? "" : mapCode(col, value);
       tr.appendChild(td);
     });
     tbody.appendChild(tr);

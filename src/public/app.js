@@ -198,7 +198,7 @@ function renderTable(columns, rows) {
           td.textContent = "";
         }
       } else {
-        td.textContent = value == null ? "" : value;
+          td.textContent = value == null ? "" : mapCode(col, value);
       }
 
       tr.appendChild(td);
