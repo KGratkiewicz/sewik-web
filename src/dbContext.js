@@ -1,10 +1,13 @@
 // dbContext.js
-const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
+const sqlite3 = require("sqlite3").verbose();
 
-const db = new sqlite3.Database(path.join(__dirname, "sewik.db"), (err) => {
-    if (err) console.error("Database error:", err);
-    else console.log("SQLite connected.");
-});
+const isPkg = typeof process.pkg !== "undefined";
+// gdy jest exe – bierzemy katalog, w którym leży plik wykonywalny
+const baseDir = isPkg ? path.dirname(process.execPath) : __dirname;
+
+// baza leży obok exe:  <katalog>/sewik.db
+const dbPath = path.join(baseDir, "sewik.db");
+const db = new sqlite3.Database(dbPath);
 
 module.exports = db;

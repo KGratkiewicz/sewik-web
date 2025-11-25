@@ -1,19 +1,22 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
+const ejs = require("ejs");
 
 const zd = require("./zdarzeniaService");
 const pj = require("./pojazdyService");
 const uc = require("./uczestnicyService");
 
+const isPkg = typeof process.pkg !== "undefined";
+const baseDir = isPkg ? path.dirname(process.execPath) : __dirname;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 
 app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, "public")));
+app.set("views", path.join(baseDir, "views"));      // szablony obok exe
+app.use(express.static(path.join(baseDir, "public"))); // statyki obok exe
 
 // ----- API -----
 app.get("/zdarzenia", zd.getZdarzenia);

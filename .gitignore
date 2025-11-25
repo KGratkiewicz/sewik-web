@@ -139,3 +139,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 *.db
+
+*.exe
+sewik-mac-arm

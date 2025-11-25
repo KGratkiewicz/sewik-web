@@ -1,4 +1,25 @@
 {
+  "name": "sewik-web",
+  "version": "1.0.0",
+  "description": "Lokalna aplikacja SEWIK (Node + Express + SQLite)",
+  "main": "server.js",
+  "bin": "server.js",
+  "scripts": {
+    "start": "node server.js",
+
+    "build:win": "pkg server.js --targets node18-win-x64 --output sewik-win.exe",
+    "build:mac:arm": "pkg server.js --targets node18-macos-arm64 --output sewik-mac-arm",
+    "build:mac:x64": "pkg server.js --targets node18-macos-x64 --output sewik-mac-x64"
+  },
+  "pkg": {
+    "scripts": [
+      "node_modules/ejs/**/*"
+    ],
+    "assets": [
+      "public/**/*",
+      "views/**/*"
+    ]
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
