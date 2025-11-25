@@ -34,4 +34,38 @@ function getPojazdy(req, res) {
     });
 }
 
-module.exports = { getPojazdy };
+function getDistinctPojazdy(req, res) {
+    const tableName = "Pojazdy";
+    const col = req.params.col;   // <--- KLUCZOWA ZMIANA
+
+    if (!col) {
+        return res.status(400).json({ error: "Missing column name" });
+    }
+
+    const allowedCols = [
+        "RODZAJ_POJAZDU",
+        "MARKA",
+        "SPSU_KOD",
+        "SPSU_TABK_TYPE"
+    ];
+
+    if (!allowedCols.includes(col)) {
+        return res.json([]);
+    }
+
+    const sql = `SELECT DISTINCT ${col} AS value
+                 FROM ${tableName}
+                 WHERE ${col} IS NOT NULL
+                 ORDER BY value`;
+
+    db.all(sql, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+
+        const values = rows.map(r => r.value);
+        res.json(values);
+    });
+}
+
+
+module.exports = { getPojazdy, getDistinctPojazdy };
+

@@ -445,13 +445,17 @@ function renderFilterOptionsP(col, values, wrapper) {
 
   values.forEach(val => {
     if (val == null || val === "") return;
+
+    // NOWOŚĆ: używamy mapCode do wyświetlania
+    const mapped = (typeof mapCode === "function") ? mapCode(col, val) : String(val);
+
     const label = document.createElement("label");
     label.classList.add("filter-option-label");
-    label.dataset.valueText = String(val).toLowerCase();
+    label.dataset.valueText = mapped.toLowerCase();
 
     const cb = document.createElement("input");
     cb.type = "checkbox";
-    cb.value = val;
+    cb.value = val;                // wartość surowa, tak jak wcześniej
     cb.dataset.col = col;
     cb.classList.add("filter-option");
     cb.checked = selected.has(val);
@@ -467,12 +471,13 @@ function renderFilterOptionsP(col, values, wrapper) {
 
     label.appendChild(cb);
     const textSpan = document.createElement("span");
-    textSpan.textContent = val;
+    textSpan.textContent = mapped;  // zamiast surowego `val`
     label.appendChild(textSpan);
 
     optionsDiv.appendChild(label);
   });
 }
+
 
 // paginacja
 

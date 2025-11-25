@@ -446,9 +446,12 @@ function renderFilterOptionsU(col, values, wrapper) {
 
   values.forEach(val => {
     if (val == null || val === "") return;
+
+    const mapped = (typeof mapCode === "function") ? mapCode(col, val) : String(val);
+
     const label = document.createElement("label");
     label.classList.add("filter-option-label");
-    label.dataset.valueText = String(val).toLowerCase();
+    label.dataset.valueText = mapped.toLowerCase();
 
     const cb = document.createElement("input");
     cb.type = "checkbox";
@@ -468,12 +471,13 @@ function renderFilterOptionsU(col, values, wrapper) {
 
     label.appendChild(cb);
     const textSpan = document.createElement("span");
-    textSpan.textContent = val;
+    textSpan.textContent = mapped;
     label.appendChild(textSpan);
 
     optionsDiv.appendChild(label);
   });
 }
+
 
 // paginacja
 

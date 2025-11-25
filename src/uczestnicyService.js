@@ -33,5 +33,37 @@ function getUczestnicy(req, res) {
         });
     });
 }
+function getDistinctUczestnicy(req, res) {
+    const tableName = "Osoby";
+    const col = req.params.col;
 
-module.exports = { getUczestnicy };
+    if (!col) {
+        return res.status(400).json({ error: "Missing column name" });
+    }
+
+    const allowedCols = [
+        "PLEC",
+        "SOBY_KOD",
+        "SSRU_KOD",
+        "SUSU_KOD",
+        "SRUZ_KOD",
+        "STUC_KOD",
+        "MIEJSCE_W_POJ"
+    ];
+
+    if (!allowedCols.includes(col)) {
+        return res.json([]);
+    }
+
+    const sql = `SELECT DISTINCT ${col} AS value FROM ${tableName} WHERE ${col} IS NOT NULL ORDER BY value`;
+
+    db.all(sql, [], (err, rows) => {
+        if (err) return res.status(500).json({ error: err.message });
+
+        const values = rows.map(r => r.value);
+        res.json(values);
+    });
+}
+
+module.exports = { getUczestnicy, getDistinctUczestnicy };
+
